@@ -1,0 +1,17 @@
+service: demo-bun-astro
+image: gambala/demo-bun-astro
+servers:
+  - <%= ENV["MAIN_SERVER_IP"] %>
+labels:
+  traefik.http.routers.demo-bun-astro-web.rule: Host(`bun-astro.gambala.pro`)
+registry:
+  server: ghcr.io
+  username: gambala
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+healthcheck:
+  interval: 10s
+  path: /
+  cmd: ls -l > /dev/null
+builder:
+  multiarch: false
