@@ -21,7 +21,7 @@ COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 
 # Install curl for Kamal health checks
-# RUN apk add --no-cache curl
+RUN apk add --no-cache curl
 
 ENV HOST=0.0.0.0
 ENV PORT=4321

@@ -12,6 +12,6 @@ registry:
 healthcheck:
   interval: 10s
   path: /
-  cmd: ls -l > /dev/null
+  port: 4321
 builder:
   multiarch: false
