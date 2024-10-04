@@ -1,17 +1,20 @@
+<% require "dotenv"; Dotenv.load(".env") %>
+
 service: demo-bun-astro
 image: gambala/demo-bun-astro
 servers:
   - <%= ENV["MAIN_SERVER_IP"] %>
-labels:
-  traefik.http.routers.demo-bun-astro-web.rule: Host(`bun-astro.gambala.pro`)
+proxy:
+  ssl: false
+  host: bun-astro.gambala.pro
+  app_port: 4321
+  healthcheck:
+    interval: 10
+    path: /
 registry:
   server: ghcr.io
   username: gambala
   password:
     - KAMAL_REGISTRY_PASSWORD
-healthcheck:
-  interval: 10s
-  path: /
-  port: 4321
 builder:
-  multiarch: false
+  arch: arm64
