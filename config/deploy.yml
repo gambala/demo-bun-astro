@@ -9,7 +9,6 @@ proxy:
   host: bun-astro.gambala.pro
   app_port: 4321
   healthcheck:
-    interval: 10
     path: /
 registry:
   server: ghcr.io
