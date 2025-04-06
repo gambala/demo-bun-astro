@@ -1,10 +1,10 @@
 FROM oven/bun:alpine AS base
   WORKDIR /app
 
-  # By copying only the package.json and bun.lockb here,
+  # By copying only the package.json and bun.lock here,
   # we ensure that the following `-deps` steps are independent of the source code.
   # Therefore, the `-deps` steps will be skipped if only the source code changes.
-  COPY package.json bun.lockb ./
+  COPY package.json bun.lock ./
 
 
 FROM base AS prod-deps
